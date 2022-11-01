@@ -1,6 +1,4 @@
 import os
-#from random import randrange
-#import linecache
 import ast
 
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -25,12 +23,13 @@ def cadastraTitulo(titulo): #Recebe um titulo [Dicionário] e converte para stri
 
 def mostraBonito(listaDeTilulos):
     
-    if type(listaDeTilulos) == "str":
-        print("String")
+    if type(listaDeTilulos) == str:
+            aux = eval(listaDeTilulos)
+            print(aux)
     else:
         for linha in listaDeTilulos:
             aux = eval(linha)
-            print("Titulo: " + str(aux["titulo"]))
+            print("Tipo: " + str(aux["tipo"]) + " "*(10-len(str(aux["tipo"]))) + " Titulo: " + str(aux["titulo"]))
 
 
 def menu():
@@ -40,9 +39,13 @@ def menu():
     print("4- Procurar Título") #Luiza
     print("5- Sair do programa")
     
-def pegaDadosCadastro():
-    tipo = input("Tipo: ") #
-    titulo = input("Titulo: ")
+def pegaDadosCadastro(tituloReferencia=False):
+    tipo = input("Tipo: ")
+    if tituloReferencia:
+        tituloReferencia = eval(tituloReferencia)
+        titulo = tituloReferencia["titulo"]
+    else:
+        titulo = input("Titulo: ")
     genero = input("Genero: ")
     duracao = input("Duracao: ")
     assistido = input("Assitido S/N: ")
@@ -51,11 +54,15 @@ def pegaDadosCadastro():
     else:
         assistido = '0'
     titulo = ("{" + f"'tipo': '{tipo}', 'titulo': '{titulo}', 'genero':'{genero}', 'duracao':'{duracao}', 'assistido':'{assistido}'"+ "}")
+    print(titulo)
     return titulo
 
 
 def listaTodosOsTitulos():
-    pass
+    with open('database.txt', 'r') as file:
+        # Le a lista de linhas do documento completo e joga em um array
+        data = file.readlines()
+        return data
 
 def listaTodosDeGenero(generos):
     pass
@@ -69,3 +76,28 @@ def relatorioTitulos():
             #aux = ast.literal_eval(line)
             titulosAretornar.append(line)
         return titulosAretornar
+
+
+#Encontra a pessoa no arquivo e atualiza os dados desta pessoa. 
+#Se check for passado ele altera o status de checIn/Out da pessoa;
+
+def editaTitulo(titulo, assistido=False):
+    
+    with open('database.txt', 'r') as file:
+        # Le a lista de linhas do documento completo e joga em um array
+        data = file.readlines()
+        titulo = eval(titulo)
+        if assistido:
+            print(titulo)
+            titulo['assistido'] = 1
+        
+        #Percorre todo o "arquivo" data que possui o conteúdo do txt e verifica linha a linha até encontrar o titulo e sobrescreve a linha inteira    
+        for i in range (len(data)):
+            aux = eval(data[i])
+
+            if aux['titulo'] == titulo['titulo']:
+                data[i] = str(titulo)+"\n"
+
+    # Escreve todo o conteúdo da variavel data novamente no arquivo.
+    with open('database.txt', 'w') as file:
+        file.writelines( data )

@@ -1,3 +1,3 @@
-{'tipo': 'filme', 'titulo': 'Nome', 'genero': 'genero legal', 'duracao': 120, 'assistido': 1}
-{'tipo': 'filme', 'titulo': '007', 'genero': 'genero legal', 'duracao': 120, 'assistido': 1}
+{'tipo': 'Filme', 'titulo': 'Nome', 'genero': 'Acao', 'duracao': '60', 'assistido': 0}
+{'tipo': 'Acao2', 'titulo': '007', 'genero': 'Acao', 'duracao': '30', 'assistido': '1'}
 {'tipo': 'filme', 'titulo': 'Ok', 'genero':'neutro', 'duracao':'40', 'assistido':'0'}
