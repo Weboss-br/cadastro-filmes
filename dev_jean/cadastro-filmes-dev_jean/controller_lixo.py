@@ -32,7 +32,7 @@ def existePessoa(pessoa): #Recebe o [dicionario] pessoa e verifica se ela existe
 #Encontra a pessoa no arquivo e atualiza os dados desta pessoa. 
 #Se check for passado ele altera o status de checIn/Out da pessoa;
 
-def editaPessoa(pessoa, check=False):
+def editaPessoa(titulo, check=False):
     
     with open('pessoas.txt', 'r') as file:
         # read a list of lines into data

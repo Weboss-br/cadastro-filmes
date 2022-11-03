@@ -3,9 +3,10 @@ from controller import buscaTitulo, cadastraTitulo, pegaDadosCadastro, menu
 
 #print(buscaTitulo(input("digite o nome da obra")))
 
-#menu()
+menu()
 
 
-titulo = pegaDadosCadastro()
+#titulo = pegaDadosCadastro()
 
-cadastraTitulo(titulo)
+#cadastraTitulo(titulo)
+

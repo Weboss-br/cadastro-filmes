@@ -46,6 +46,19 @@ def pegaDadosCadastro():
     return titulo
 
 
+
+def relatorioHospedes():
+
+    #sintax com funcao open para arquivo txt
+    with open('hotel/hotel.txt') as arquivo:  
+
+        #print recebendo a variavel arquivo que referencia arquivo txt, sendo lida pela funcao internalizada read
+        print(arquivo.read())
+
+        
+
+
+
 def listaTodosOsTitulos():
     pass
 
